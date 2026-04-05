@@ -204,6 +204,10 @@ function syncUIStates() {
     const isRightOpen = right.classList.contains('mobile-open');
     const isRightVisible = right.classList.contains('visible'); // Unit selected
 
+    if (btnRight) {
+        btnRight.classList.toggle('active-unit', isRightVisible);
+    }
+
     if (isMobile) {
         // Update Body Classes (for Map Lock & HUD Hide)
         document.body.classList.toggle('panel-left-open', isLeftOpen);
@@ -214,7 +218,6 @@ function syncUIStates() {
             btnLeft.style.display = isLeftOpen ? 'none' : 'flex';
         }
         if (btnRight) {
-            btnRight.classList.toggle('active-unit', isRightVisible);
             btnRight.style.display = (isRightVisible && !isRightOpen) ? 'flex' : 'none';
         }
     } else {
